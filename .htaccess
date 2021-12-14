@@ -1,0 +1,16 @@
+#ErrorDocument 404 "Page not found"
+ErrorDocument 404 /allpngfree/404.php
+
+#Remove .php_value
+RewriteEngine on
+#RewriteRule ^([^/\.]+)?$ post.php?id=$1
+#RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+php_value upload_max_filesize 512M
+php_value post_max_size 512M
+php_value max_input_time 300
+php_value max_execution_time 300
